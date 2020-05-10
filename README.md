@@ -1,3 +1,6 @@
+[![build status](https://github.com/IanSeng/event-widget/workflows/Build/badge.svg)](https://github.com/IanSeng/event-widget/actions)
+
+
 # EventWidget
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
