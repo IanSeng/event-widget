@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "event-widget": {
+    "event-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/event-widget",
+            "outputPath": "dist/event-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "event-widget:build"
+            "browserTarget": "event-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "event-widget:build:production"
+              "browserTarget": "event-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "event-widget:build"
+            "browserTarget": "event-app:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "event-widget:serve"
+            "devServerTarget": "event-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "event-widget:serve:production"
+              "devServerTarget": "event-app:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "event-widget"
+  "defaultProject": "event-app"
 }
