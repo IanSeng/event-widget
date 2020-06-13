@@ -1,0 +1,48 @@
+name: Unit and e2e test
+
+on: [push]
+
+jobs: 
+  unit-test: 
+    runs-on: ubuntu-latest
+    steps:
+     # track package-lock.json file by np, cach from a previous build to speed up
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: npm ci and npm run test
+        run: |
+            npm ci
+            npm run build:ci
+
+  e2e-test: 
+    runs-on: ubuntu-latest
+    steps:
+     # track package-lock.json file by np, cach from a previous build to speed up
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: npm ci and npm run e2e
+        run: |
+            npm ci
+            npm run e2e
