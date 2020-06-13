@@ -8,7 +8,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
+    "cypress:run": "cypress run -- run --spec cypress/integration/test/test.spec.js",
     "build": "ng build",
     "build:prod": "ng build --prod",
     "build-and-start:prod": "run-s build:prod start:prod",
