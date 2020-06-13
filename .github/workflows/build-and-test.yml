@@ -28,7 +28,7 @@ jobs:
       - name: npm ci and npm run test
         run: |
             npm ci
-            npm run build:ci
+            npm run test
 
   e2e-test: 
     runs-on: ubuntu-latest
