@@ -5,8 +5,13 @@ on: [push]
 jobs: 
   unit-test: 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
-     # track package-lock.json file by np, cach from a previous build to speed up
+      - uses: actions/checkout@v1
+     # track package-lock.json file by np, cache from a previous build to speed up
       - name: Cache node modules
         uses: actions/cache@v1
         with:
@@ -28,6 +33,7 @@ jobs:
   e2e-test: 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
      # track package-lock.json file by np, cach from a previous build to speed up
       - name: Cache node modules
         uses: actions/cache@v1
