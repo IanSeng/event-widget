@@ -1,4 +1,3 @@
-import { RouterModule } from '@angular/router';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './../environments/environment';
@@ -26,8 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AppRoutingModule,
     NgbModule,
-
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

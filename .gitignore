@@ -50,4 +50,4 @@ cypress/screenshots
 Thumbs.db
 
 # env
-/.env
+/src/environments/environment.local.ts

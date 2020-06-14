@@ -4,16 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
-    apiKey: 'AIzaSyDNIcQK2hBvoCkLtVSpJPvAEAhrR4varfg',
-    authDomain: 'event-dev-data.firebaseapp.com',
-    databaseURL: 'https://event-dev-data.firebaseio.com',
-    projectId: 'event-dev-data',
-    storageBucket: 'event-dev-data.appspot.com',
-    messagingSenderId: '27689699950',
-    appId: '1:27689699950:web:dbe062b7e9d5126775f47f',
-    measurementId: 'G-2X98M5KEW3'
-  }
+  firebaseConfig: {}
 };
 
 /*
