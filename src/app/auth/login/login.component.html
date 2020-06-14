@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="container__header">Welcome Back FT</h1>
+  <p class="container__sub-header">
+    We need to make sure that you are a real FT
+  </p>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      class="form-control"
+      placeholder="name"
+    />
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
+      class="form-control"
+      placeholder="password"
+    />
+    <button type="submit" [disabled]="!loginForm.valid" class="btn login">Log in</button>
+  </form>
+
+  
+</div>
