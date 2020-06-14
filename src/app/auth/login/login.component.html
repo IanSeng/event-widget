@@ -1,15 +1,17 @@
-<div class="container">
+<div class="container" *ngIf="!isLoading else loading">
   <h1 class="container__header">Welcome Back FT</h1>
   <p class="container__sub-header">
     We need to make sure that you are a real FT
   </p>
+  <ngb-alert *ngIf="error" [type]="'danger'" (close)="error = null">{{error}}</ngb-alert>
+ 
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <input
       type="text"
       id="email"
       formControlName="email"
       class="form-control"
-      placeholder="name"
+      placeholder="email"
     />
     <input
       type="password"
@@ -23,3 +25,9 @@
 
   
 </div>
+
+<ng-template #loading>
+    <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+</ng-template>
