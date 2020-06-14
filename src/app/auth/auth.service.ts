@@ -4,10 +4,13 @@ import { Router } from '@angular/router';
 import { User, auth } from 'firebase';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
+export interface Account {
+    email: string;
+    password: string;
+}
 @Injectable({
     providedIn: 'root'
 })
-
 export class AuthService {
     user: User;
     constructor(private angularFireAuth: AngularFireAuth, private angualrFireStore: AngularFirestore, private router: Router) {
@@ -21,8 +24,8 @@ export class AuthService {
         })
     }
 
-    login(email: string, password: string) {
-        return this.angularFireAuth.signInWithEmailAndPassword(email, password)
+    login(account: Account) {
+        return this.angularFireAuth.signInWithEmailAndPassword(account.email, account.password)
             .then(result => {
                 console.log('loggedin' + result);
                 this.saveUserData(result.user);
