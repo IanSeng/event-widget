@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthService } from './../auth.service';
+import { Router } from '@angular/router';
 import { LoginComponent } from './login.component';
+describe('LoginComponent', () => {
+    let fixture: LoginComponent;
+    let mockAuthService: AuthService;
+    let mockRouter: Router;
 
-// describe('LoginComponent', () => {
-//   let component: LoginComponent;
-//   let fixture: ComponentFixture<LoginComponent>;
+    beforeEach(() => {
+        fixture = new LoginComponent(mockAuthService, mockRouter);
+    });
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [LoginComponent]
-//     })
-//       .compileComponents();
-//   }));
+    describe('Setup component', () => {
+        describe('ngOnInit', () => {
+            it('should call initForm', () => {
+                const initFormSpy = jest.spyOn(fixture, 'initForm');
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(LoginComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+                fixture.ngOnInit();
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+                expect(initFormSpy).toHaveBeenCalled();
+            });
+        });
+    })
+});

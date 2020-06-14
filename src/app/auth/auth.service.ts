@@ -24,14 +24,23 @@ export class AuthService {
         })
     }
 
-    login(account: Account) {
-        return this.angularFireAuth.signInWithEmailAndPassword(account.email, account.password)
-            .then(result => {
-                console.log('loggedin' + result);
-                this.saveUserData(result.user);
-            }).catch(error => {
-                return error;
-            });
+    login(account: Account): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.angularFireAuth.signInWithEmailAndPassword(account.email, account.password)
+                .then(result => {
+                    resolve('login successful');
+                    this.saveUserData(result.user);
+                }).catch(error => {
+                    reject(error.messsage);
+                });
+        });
+        // return this.angularFireAuth.signInWithEmailAndPassword(account.email, account.password)
+        //     .then(result => {
+        //         console.log('loggedin' + result);
+        //         this.saveUserData(result.user);
+        //     }).catch(error => {
+        //         return error;
+        //     });
     }
 
     register(email: string, password: string) {
@@ -40,7 +49,7 @@ export class AuthService {
                 this.sendVerificationEmail();
                 this.saveUserData(result.user);
             }).catch(error => {
-                console.log(error);
+                return error;
             })
     }
 
