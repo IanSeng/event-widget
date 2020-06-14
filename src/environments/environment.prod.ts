@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  environment: 'Production'
+  environment: 'Production',
+  firebaseConfig: {}
 };
