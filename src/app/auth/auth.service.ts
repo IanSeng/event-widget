@@ -13,7 +13,7 @@ export interface Account {
 })
 export class AuthService {
     user: User;
-    constructor(private angularFireAuth: AngularFireAuth, private angualrFireStore: AngularFirestore, private router: Router) {
+    constructor(private angularFireAuth: AngularFireAuth, private angualrFireStore: AngularFirestore) {
         this.angularFireAuth.authState.subscribe(user => {
             if (user) {
                 this.user = user;
@@ -76,7 +76,7 @@ export class AuthService {
         };
         return userRef.set(userData, {
             merge: true
-        })
+        });
     }
 
 
