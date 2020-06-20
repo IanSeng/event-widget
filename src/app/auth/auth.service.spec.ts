@@ -1,4 +1,5 @@
-import { AuthService } from './auth.service';
+import { async } from '@angular/core/testing';
+import { AuthService, Account } from './auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { of } from 'rxjs';
@@ -22,17 +23,19 @@ describe('AuthService', () => {
         uid: '123456789',
     };
 
-    
+    beforeEach(() => {
+        mockAngularFireAuth = {
+            authState: of(mockUser),
+            signInWithEmailAndPassword() {
+                return Promise.resolve({});
+            }
+        };
+        spyLocalStorage = jest.spyOn(localStorage, 'setItem');
+        authService = new AuthService(mockAngularFireAuth, mockAngualrFireStore);
+    });
 
     describe('AngularFireAuth', () => {
-        beforeEach(() => {
-            mockAngularFireAuth = {
-                authState: of(mockUser)
-            };
-            spyLocalStorage = jest.spyOn(localStorage, 'setItem');
-            authService = new AuthService(mockAngularFireAuth, mockAngualrFireStore);
-        });
-        
+
         it('should correctly create the service', () => {
             expect(authService).toBeTruthy();
         });
@@ -59,10 +62,58 @@ describe('AuthService', () => {
     });
 
     describe('Login Account', () => {
-        it('should login user', () => {
 
-        })
+        it('should login user', async () => {
+            // jest.mock('angularFireAuth', () => ({
+            //     signInWithEmailAndPassword(email, password) {
+            //         return Promise.resolve({ name: 'someUser' })
+            //     }
+            // }))
+
+            // jest.mock('angularFireAuth', () => {
+            //     return {
+            //         signInWithEmailAndPassword: jest.fn(),
+            //     };
+            // });
+
+            const spy = spyOn(mockAngularFireAuth, 'signInWithEmailAndPassword').and.callThrough();
+            const accont: Account = {
+                email: 'aaa',
+                password: 'bbb'
+            }
+            authService.login(accont);
+            expect(spy).toHaveBeenCalled()
+        });
+
+        it('should expect resolve', async () => {
+            const spy = spyOn(mockAngularFireAuth, 'signInWithEmailAndPassword').and.callThrough();
+            const accont: Account = {
+                email: 'aaa',
+                password: 'bbb'
+            }
+
+            return authService.login(accont).then(e => {
+                expect(e).toEqual('login successful')
+            });
+            // await expect(authService.login(accont)).resolve.toBeDefined();
+        });
+
+        // it('should return reject promise', async () => {
+        //     jest.clearAllMocks();
+        //     mockAngularFireAuth = {
+        //         authState: of(mockUser),
+        //         signInWithEmailAndPassword() {
+        //             return Promise.reject('aa');
+        //         }
+        //     };
+        //     authService = new AuthService(mockAngularFireAuth, mockAngualrFireStore);
+
+        //     const accont: Account = {
+        //         email: 'aaa',
+        //         password: 'bbb'
+        //     }
+        //     return expect(authService.login(accont)).toEqual(new Error('error'));
+        // });
     })
-
 
 })
