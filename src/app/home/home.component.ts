@@ -1,3 +1,4 @@
+import { TagColors } from './../shared/card/card.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  tagColors = TagColors;
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

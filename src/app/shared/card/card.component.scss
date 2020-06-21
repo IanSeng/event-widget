@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+
+.container {
+  width: 20rem;
+  padding: $sp-xs;
+  background: white;
+  box-shadow: 0px 8px 8px $shadow-color;
+
+  &__header {
+    padding: 0 0 $sp-xxs 0;
+    font-weight: bold;
+    color: $grey-1;
+  }
+
+  &__item {
+    display: flex;
+    padding: 0 0 $sp-xxs 0;
+    color: $grey-2;
+
+    &--title {
+      width: 4.25rem;
+    }
+
+    &--content {
+      padding: 0 0 0 $sp-xxs;
+      width: 13.25rem;
+      color: $grey-1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__item:last-child {
+    padding: 0;
+  }
+}
+
+.green-border {
+  border-left: 5px solid $green;
+}
+
+.blue-border {
+  border-left: 5px solid $blue;
+}
+
+.purple-border {
+  border-left: 5px solid $purple;
+}

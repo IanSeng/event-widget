@@ -1,3 +1,4 @@
+import { CardCompnent } from './shared/card/card.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './../environments/environment';
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CardCompnent
   ],
   imports: [
     BrowserModule,
