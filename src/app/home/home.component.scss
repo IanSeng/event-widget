@@ -1,0 +1,35 @@
+@import "../styles/variables";
+
+.today-section {
+  &__header {
+    margin: 0 0 $sp-xs 0;
+  }
+  &__sub-header {
+    margin: 0 0 $sp-l 0;
+  }
+}
+
+section {
+    margin: 0 0 $sp-xxxl 0;
+}
+
+#header {
+    margin: 0 0 $sp-xs 0;
+}
+
+#sub-header {
+    margin: 0 0 $sp-l 0;
+}
+
+.card-container {
+    display: flex;
+}
+
+.card-content {
+    margin: 0 0 0 $sp-m;
+}
+
+.card-content:first-of-type{
+    margin: 0 0 0 0;
+  
+}

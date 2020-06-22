@@ -8,6 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   tagColors = TagColors;
+  events = [
+    {
+      name: 'Potluck',
+      dateTime: 'June 8, 2020 at 8:00 pm',
+      venue: 'ihouse studio',
+      hosts: 'abc',
+      tagColor: 'green-border'
+    },
+    {
+      name: 'Potluck',
+      dateTime: 'June 8, 2020 at 8:00 pm',
+      venue: 'ihouse studio',
+      hosts: 'abc',
+      tagColor: 'blue-border'
+    }
+  ];
+
+
   constructor() {
   }
 
