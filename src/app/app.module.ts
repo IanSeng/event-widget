@@ -1,3 +1,4 @@
+import { EventCheckinComponent } from './event-checkin/event-checkin.component';
 import { CardCompnent } from './shared/card/card.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
     LoadingSpinnerComponent,
-    CardCompnent
+    CardCompnent,
+    EventCheckinComponent,
   ],
   imports: [
     BrowserModule,
