@@ -5,16 +5,20 @@
   align-items: left;
   text-align: left;
   min-height: calc(100vh - 4rem);
-  width: 350px;
-
+  width: 320px;
+  padding: 0;
+  
+  body {
+    background-color: lightblue;
+  }
   &__header {
     margin: 0 0 16px 0;
-    color: #4D4D4D;
+    color: #4d4d4d;
   }
 
   &__sub-header {
     margin: 0 0 32px 0;
-    color: #939BA3;
+    color: #939ba3;
   }
 
   input {
@@ -27,7 +31,7 @@
     margin: 0 0 32px 0;
   }
   input.ng-invalid.ng-touched {
-    border: 1px solid #FF4D4F;
+    border: 1px solid #ff4d4f;
   }
 }
 .form-control {
@@ -35,7 +39,7 @@
   border-radius: 0;
 }
 button {
-  background: #177DDC;
+  background: #177ddc;
   width: 320px;
   color: #fff;
 }
@@ -43,4 +47,3 @@ button:hover {
   color: #fff;
   opacity: 0.7;
 }
-

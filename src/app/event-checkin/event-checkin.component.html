@@ -1,2 +1,35 @@
-<h1>hello</h1>
-<button (click)="addItem()">aaa</button>
+<div class="container" *ngIf="!isLoading; else loading">
+  <h1 class="container__header">Check-In</h1>
+  <h3 class="container__sub-header">
+    You are checking in to Potluck event
+  </h3>
+  <ngb-alert *ngIf="error" [type]="'danger'" (close)="error = null">{{
+    error
+  }}</ngb-alert>
+
+  <form [formGroup]="loginForm" (ngSubmit)="addItem()">
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      class="form-control"
+      placeholder="email"
+    />
+    <input
+      type="text"
+      id="password"
+      formControlName="password"
+      class="form-control"
+      placeholder="name"
+    />
+    <button type="submit" [disabled]="!loginForm.valid" class="btn login">
+      Check-in
+    </button>
+  </form>
+</div>
+
+<ng-template #loading>
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-template>

@@ -14,8 +14,11 @@
 #outer-container {
   display: table;
   margin: 0 auto;
-  width: 1000px;
+  max-width: 1000px;
   padding: $sp-l $sp-m;
+  @media screen and (max-width: $mobile-size) {
+    padding: $sp-m $sp-xs;
+  }
 }
 
 

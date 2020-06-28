@@ -7,7 +7,9 @@ import { EventCheckinComponent } from './event-checkin/event-checkin.component';
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent},
-    { path: 'checkin', component: EventCheckinComponent}
+    { path: 'checkin', component: EventCheckinComponent, children: [
+        { path: ':code', component: EventCheckinComponent}
+    ]},
 ]
 
 @NgModule({
