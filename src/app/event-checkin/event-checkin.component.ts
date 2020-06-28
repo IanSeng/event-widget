@@ -1,9 +1,11 @@
+import { FireStoreService } from './../service/firestore.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentData } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { EventAttendees } from '../shared/model/event.model';
 
 @Component({
     selector: 'app-event-checkin',
@@ -13,18 +15,15 @@ import { map } from 'rxjs/operators';
 
 export class EventCheckinComponent implements OnInit {
     eventCode: string;
-    date: Date;
-    dateString: string;
-    timeString: string;
+
     private itemsCollection: AngularFirestoreCollection<string>;
     items: Observable<string>;
+    eventInfo: Observable<EventAttendees>;
     loginForm: FormGroup;
     error = '';
     isLoading = false;
-    constructor(private firestore: AngularFirestore, private route: ActivatedRoute) {
-        this.date = new Date('Fri Oct 23 2020 11:23:13 GMT-0400');
-        this.timeString = `${this.date.getHours().toString()} + ${this.date.getMinutes().toString()}`;
-        this.dateString = `${this.date.getFullYear().toString()} + ${(this.date.getMonth() + 1).toString()} + ${this.date.getDate()}`;
+    constructor(private fireStoreService: FireStoreService, private route: ActivatedRoute) {
+
 
 
     }
@@ -34,34 +33,45 @@ export class EventCheckinComponent implements OnInit {
         this.route.firstChild.params.subscribe((params: Params) => {
             this.eventCode = params.code;
         });
-        this.checkEvent();
+        //this.eventInfo = this.fireStoreService.eventDetail
 
-
-    }
-
-    addItem() {
-        return new Promise<any>((resolve, reject) => {
-            this.firestore
-                .collection('event-attendees')
-                .doc('20201028MTEyMwo=')
-                .collection("attendess")
-                .add({ name: 'AbC', date: new Date(), email: 'abc-email' })
-                .then(res => { }, err => reject(err));
-        });
-    }
-
-    checkEvent() {
-        let a = this.firestore
-            .collection('event-attendees')
-            .doc('20201028MTEyMwo=')
-            .get().subscribe(a => {
-                console.log(a.data().date.toDate());
-            });
-
- 
-
+        this.fireStoreService.checkInEventInfo(this.eventCode);
+        this.eventInfo = this.fireStoreService.eventDetail;
 
     }
+    
+
+    // addItem() {
+    //     return new Promise<any>((resolve, reject) => {
+    //         this.firestore
+    //             .collection('event-attendees')
+    //             .doc('20201028MTEyMwo=')
+    //             .collection("attendess")
+    //             .add({ name: 'AbC', date: new Date(), email: 'abc-email' })
+    //             .then(res => { }, err => reject(err));
+    //     });
+    // }
+
+    // checkEvent() {
+    //     this.eventInfo = this.firestore
+    //         .collection('event-attendees')
+    //         .doc('20201028MTEyMwo=')
+    //         .get()
+    //         .pipe(map((result: DocumentData) => {
+    //             console.log(result.data().date.toDate())
+    //             return { date: result.data().date.toDate(), name: result.data().name } as EventAttendees;
+    //         }),
+    //         catchError(err => {
+    //             console.log(err)
+    //             return err;
+    //         })
+    //         )
+    //     // .subscribe((result: EventAttendees) => {
+    //     //     console.log(result.data());
+    //     // });
+
+
+    // }
 
 
     initForm() {

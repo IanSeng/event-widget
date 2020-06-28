@@ -6,8 +6,9 @@
   <ngb-alert *ngIf="error" [type]="'danger'" (close)="error = null">{{
     error
   }}</ngb-alert>
-
-  <form [formGroup]="loginForm" (ngSubmit)="addItem()">
+  <!-- <div>{{(eventInfo | async)?.name }}</div> -->
+  <div>{{(eventInfo | async)?.date }}</div>
+  <form [formGroup]="loginForm" >
     <input
       type="text"
       id="email"
