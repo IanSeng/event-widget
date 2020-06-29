@@ -6,7 +6,7 @@
   <ngb-alert *ngIf="error" [type]="'danger'" (close)="error = null">{{
     error
   }}</ngb-alert>
-  <form [formGroup]="loginForm" >
+  <form [formGroup]="checkInForm" (submit)="onCheckIn()">
     <input
       type="text"
       id="email"
@@ -16,12 +16,12 @@
     />
     <input
       type="text"
-      id="password"
-      formControlName="password"
+      id="name"
+      formControlName="name"
       class="form-control"
       placeholder="name"
     />
-    <button type="submit" [disabled]="!loginForm.valid" class="btn login">
+    <button type="submit" [disabled]="!checkInForm.valid" class="btn login">
       Check-in
     </button>
   </form>

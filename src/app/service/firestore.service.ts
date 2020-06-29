@@ -1,5 +1,5 @@
 import { map, catchError, take } from 'rxjs/operators';
-import { EventAttendees } from './../shared/model/event.model';
+import { EventAttendees, UserCheckInInfo } from './../shared/model/event.model';
 import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Subject, of, throwError, Observable, BehaviorSubject } from 'rxjs';
@@ -45,23 +45,17 @@ export class FireStoreService {
         });
     }
 
-    checkIn(eventCode: string) {
-        
-        this.afs
-            .collection('event-attendees')
-            .doc('20201028MTEyMwo=')
-            .get()
-            .pipe(map((result: DocumentData) => {
-                console.log(result.data().date.toDate())
-                //return { date: result.data().date.toDate(), name: result.data().name } as EventAttendees;
-            }),
-                catchError(err => {
-                    console.log(err)
-                    return err;
-                })
-            )
-        // .subscribe((result: EventAttendees) => {
-        //     console.log(result.data());
-        // });
+    async checkIn(eventCode: string, userInfo: UserCheckInInfo): Promise<boolean> {
+        try {
+            const res = await this.afs
+                .collection('event-attendees')
+                .doc(`${this.dateString}${eventCode}`)
+                .collection('attendess')
+                .add(userInfo);
+            return true;
+        }
+        catch (err) {
+            return false;
+        }
     }
 }
