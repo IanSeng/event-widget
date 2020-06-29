@@ -1,3 +1,4 @@
+import { CompletePageComponent } from './event-checkin/complete-page/complete-page.component';
 import { CodeSearchPageComponent } from './event-checkin/code-search-page/code-search-page.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -12,7 +13,8 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'checkin', component: EventCheckinComponent, children: [
         { path: '', component: CodeSearchPageComponent},
-        { path: ':code', component: CheckinPageComponent}
+        { path: ':code', component: CheckinPageComponent},
+        { path: ':code/complete', component: CompletePageComponent}
     ]},
     { path: 'error', component: ErrorPageComponent}
 ]

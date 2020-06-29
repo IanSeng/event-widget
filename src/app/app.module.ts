@@ -1,3 +1,4 @@
+import { CompletePageComponent } from './event-checkin/complete-page/complete-page.component';
 import { CodeSearchPageComponent } from './event-checkin/code-search-page/code-search-page.component';
 import { CheckinPageComponent } from './event-checkin/checkin-page/checkin-page.component';
 import { CardCompnent } from './shared/card/card.component';
@@ -26,7 +27,8 @@ import { EventCheckinComponent } from './event-checkin/event-checkin.component';
     CheckinPageComponent,
     ErrorPageComponent,
     CodeSearchPageComponent,
-    EventCheckinComponent
+    EventCheckinComponent,
+    CompletePageComponent
   ],
   imports: [
     BrowserModule,

@@ -107,7 +107,10 @@ export class CheckinPageComponent implements OnInit {
                         email: this.checkInForm.value.email,
                         name: this.checkInForm.value.name,
                         time: new Date()
-                    } as UserCheckInInfo);
+                    } as UserCheckInInfo)
+                    .then(() => {
+                        this.router.navigate(['complete'], { relativeTo: this.activatedRoute });
+                    });
             } else {
                 this.error = 'This event is expired';
             }

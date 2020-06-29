@@ -7,6 +7,7 @@ import { Subject, of, throwError, Observable, BehaviorSubject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class FireStoreService {
     eventDetail = new BehaviorSubject<EventAttendees>(null);
+    userInfo = new BehaviorSubject<UserCheckInInfo>(null);
     /*
     * For date and time purpose
     */
@@ -24,6 +25,7 @@ export class FireStoreService {
 
     checkInEventInfo(eventCode: string): Promise<boolean> {
         return new Promise((resolve, reject) => {
+            console.log(`${this.dateString}${eventCode}`)
             this.afs
                 .collection('event-attendees')
                 .doc(`${this.dateString}${eventCode}`)
@@ -52,6 +54,7 @@ export class FireStoreService {
                 .doc(`${this.dateString}${eventCode}`)
                 .collection('attendess')
                 .add(userInfo);
+            this.userInfo.next(userInfo);
             return true;
         }
         catch (err) {

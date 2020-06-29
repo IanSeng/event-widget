@@ -1,0 +1,9 @@
+<div class="container">
+  <img class="container__icon" src="/assets/complete-icon.svg" />
+  <h1 class="container__header">Completed</h1>
+  <h3 class="container_sub-header">
+    Thank you <span>{{ (userInfo | async)?.name }}</span
+    >! You have checked in to <span>{{ (eventDetail | async).name }}</span> at
+    <span>{{ (userInfo | async).time | date: "medium" }}</span>
+  </h3>
+</div>
