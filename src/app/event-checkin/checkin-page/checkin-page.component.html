@@ -1,13 +1,11 @@
 <div class="container" *ngIf="!isLoading; else loading">
   <h1 class="container__header">Check-In</h1>
   <h3 class="container__sub-header">
-    You are checking in to Potluck event
+    You are checking in to <span>{{(eventInfo | async)?.name }}</span>
   </h3>
   <ngb-alert *ngIf="error" [type]="'danger'" (close)="error = null">{{
     error
   }}</ngb-alert>
-  <!-- <div>{{(eventInfo | async)?.name }}</div> -->
-  <div>{{(eventInfo | async)?.date }}</div>
   <form [formGroup]="loginForm" >
     <input
       type="text"

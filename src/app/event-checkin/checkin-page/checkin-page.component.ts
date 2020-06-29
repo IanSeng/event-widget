@@ -3,8 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection, DocumentData } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Params } from '@angular/router';
-import { map, catchError } from 'rxjs/operators';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { map, catchError, take } from 'rxjs/operators';
 import { EventAttendees } from '../../shared/model/event.model';
 
 @Component({
@@ -22,21 +22,31 @@ export class CheckinPageComponent implements OnInit {
     loginForm: FormGroup;
     error = '';
     isLoading = false;
-    constructor(private fireStoreService: FireStoreService, private route: ActivatedRoute) {
+    constructor(private fireStoreService: FireStoreService, private activatedRoute: ActivatedRoute, private router: Router) {
+        this.eventInfo = this.fireStoreService.eventDetail;
 
+        this.activatedRoute.params.subscribe((params: Params) => {
+            this.eventCode = params.code;
+        });
+        
 
+        this.fireStoreService.eventDetail.pipe(take(1)).subscribe(res => {
+            console.log(atob('MTEyM0FB'));
+                let time = atob('MTEyM0FB').slice(0, -2);
+                console.log(new Date().getTime())
+                console.log(res.end.getTime())
+            if (res == null) {
+                this.fireStoreService.checkInEventInfo(this.eventCode).then().catch(err => { this.router.navigate(['/error']) });
+            }
+        });
 
     }
 
     ngOnInit(): void {
         this.initForm();
 
-        this.route.params.subscribe((params: Params) => {
-            this.eventCode = params.code;
-        });
 
-        this.fireStoreService.checkInEventInfo(this.eventCode);
-        this.eventInfo = this.fireStoreService.eventDetail;
+
 
     }
 
@@ -83,7 +93,7 @@ export class CheckinPageComponent implements OnInit {
         })
     }
 
-    onLogin() {
+    onCheckIn() {
 
     }
 }

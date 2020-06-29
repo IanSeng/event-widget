@@ -1,1 +1,31 @@
-<h1>Code search page</h1>
+<div class="container">
+  <!-- header content   -->
+  <h1 class="container__header">Search Event</h1>
+  <h3 class="container__sub-header">Please enter the event code</h3>
+
+  <!-- Error Component  -->
+  <ngb-alert *ngIf="error" [type]="'danger'" (close)="error = null">{{
+    error
+  }}</ngb-alert>
+
+  <!-- input form  -->
+  <form [formGroup]="codeForm" (submit)="onSubmit()">
+    <input
+      type="text"
+      id="eventCode"
+      formControlName="eventCode"
+      class="form-control"
+      placeholder="event code"
+    />
+    <button type="submit" [disabled]="!codeForm.valid" class="btn login">
+      Go To Event
+    </button>
+  </form>
+</div>
+
+<!-- loading component  -->
+<ng-template #loading>
+    <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+</ng-template>
