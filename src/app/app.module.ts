@@ -1,4 +1,6 @@
-import { EventCheckinComponent } from './event-checkin/event-checkin.component';
+import { CompletePageComponent } from './event-checkin/complete-page/complete-page.component';
+import { CodeSearchPageComponent } from './event-checkin/code-search-page/code-search-page.component';
+import { CheckinPageComponent } from './event-checkin/checkin-page/checkin-page.component';
 import { CardCompnent } from './shared/card/card.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { EventCheckinComponent } from './event-checkin/event-checkin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     LoadingSpinnerComponent,
     CardCompnent,
+    CheckinPageComponent,
+    ErrorPageComponent,
+    CodeSearchPageComponent,
     EventCheckinComponent,
+    CompletePageComponent
   ],
   imports: [
     BrowserModule,
