@@ -26,8 +26,9 @@ section {
     display: flex;
 }
 
-.card-content {
-    margin: 0 0 0 $sp-m;
+.card-content:first-child {
+    //margin: 0 0 0 $sp-m;
+    padding: 0 $sp-m 0 0;
 }
 
 .card-content:first-of-type {

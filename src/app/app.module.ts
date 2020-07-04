@@ -1,3 +1,4 @@
+import { ParticipantsComponent } from './home/participants/participants.component';
 import { CompletePageComponent } from './event-checkin/complete-page/complete-page.component';
 import { CodeSearchPageComponent } from './event-checkin/code-search-page/code-search-page.component';
 import { CheckinPageComponent } from './event-checkin/checkin-page/checkin-page.component';
@@ -28,7 +29,8 @@ import { EventCheckinComponent } from './event-checkin/event-checkin.component';
     ErrorPageComponent,
     CodeSearchPageComponent,
     EventCheckinComponent,
-    CompletePageComponent
+    CompletePageComponent,
+    ParticipantsComponent
   ],
   imports: [
     BrowserModule,
