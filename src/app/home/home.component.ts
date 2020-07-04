@@ -1,5 +1,10 @@
+import { Router } from '@angular/router';
+import { Events, EventDetails } from './../shared/model/event.model';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 import { TagColors } from './../shared/card/card.component';
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -8,28 +13,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   tagColors = TagColors;
-  events = [
-    {
-      name: 'Potluck',
-      dateTime: 'June 8, 2020 at 8:00 pm',
-      venue: 'ihouse studio',
-      hosts: 'abc',
-      tagColor: 'green-border'
-    },
-    {
-      name: 'Potluck',
-      dateTime: 'June 8, 2020 at 8:00 pm',
-      venue: 'ihouse studio',
-      hosts: 'abc',
-      tagColor: 'blue-border'
-    }
-  ];
+  events = new BehaviorSubject<Events[]>(null);
 
 
-  constructor() {
+
+  constructor(private afs: AngularFirestore, private router: Router) {
+    this.afs
+      .collection('events')
+      .snapshotChanges()
+      .pipe(take(1)).subscribe(result => {
+        this.events.next(result.map(e => {
+          return (
+            new Events (e.payload.doc.id, e.payload.doc.data() as EventDetails)
+          ) ;
+        }));
+      });
   }
 
   ngOnInit(): void {
+
+  }
+  onEvent(eventId: string): void {
+    console.log(eventId);
+    this.router.navigate(['/event'])
   }
 
 }

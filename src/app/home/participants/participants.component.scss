@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.container {
+  width: 1000px;
+}
+.header {
+    margin: 0 0 $sp-xs 0;
+}
+
+.sub-header {
+    margin: 0 0 $sp-l 0;
+}
+
+.table-container {
+  width: 100%;
+}
+.table-header, .table-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-col {
+    flex: 1;
+}
+.table-col {
+    text-align: center;
+}
+.table-col:first-child{
+    text-align: left;
+    max-width: $sp-xxxl;
+}
+.table-col:last-child {
+    text-align: right;
+    max-width: $sp-xxxl;
+}
+
+.table-header {
+    padding: 0 $sp-xl $sp-xxs;
+    border-bottom: 2px solid $grey-2;
+}
+.table-body{
+    padding: $sp-xs $sp-s;
+    margin: $sp-s $sp-xs 0;
+    background: #fff;
+    box-shadow: 0 1px 3px $shadow-color; 
+}
+
+.table-body:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}

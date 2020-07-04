@@ -1,5 +1,5 @@
-<div ngClass="container {{tagColor}}">
-    <h5 class="container__header">Potluck</h5>
+<div ngClass="container {{tagColor}}" (click)="onEventClick()">
+    <h5 class="container__header">{{ name }}</h5>
     <div class="container__item">
         <p class="container__item--title">Date/Time</p>
         <p>:</p>
