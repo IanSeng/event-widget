@@ -1,7 +1,6 @@
 import { UserCheckInInfo } from './../../shared/model/event.model';
-import { map, take } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-participants',

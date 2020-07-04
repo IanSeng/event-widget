@@ -24,8 +24,8 @@ export class HomeComponent implements OnInit {
       .pipe(take(1)).subscribe(result => {
         this.events.next(result.map(e => {
           return (
-            new Events (e.payload.doc.id, e.payload.doc.data() as EventDetails)
-          ) ;
+            new Events(e.payload.doc.id, e.payload.doc.data() as EventDetails)
+          );
         }));
       });
   }
@@ -34,8 +34,7 @@ export class HomeComponent implements OnInit {
 
   }
   onEvent(eventId: string): void {
-    console.log(eventId);
-    this.router.navigate(['/event'])
+    this.router.navigate(['/event'], { queryParams: { eventId: `${eventId}` } });
   }
 
 }
