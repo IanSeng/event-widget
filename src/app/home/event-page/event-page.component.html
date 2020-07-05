@@ -1,1 +1,41 @@
-<h1>Event page works</h1>
+<div class="container">
+  <section class="event-details" *ngIf="(event | async) as  resolvedEvent">
+    <div class="upper-section">
+      <div class="upper-section__event-details">
+        <h1 class="upper-section__event-details--name">
+          {{ resolvedEvent.eventDetails.name }}
+        </h1>
+        <div class="upper-section__event-details--venue body-1">
+          Venue: {{ resolvedEvent.eventDetails.venue }}
+        </div>
+        <div class="upper-section__event-details--category body-1">
+          Category: {{ resolvedEvent.eventDetails.categories }}
+        </div>
+      </div>
+      <div class="upper-section__event-code">
+        <h1>{{ resolvedEvent.eventDetails.eventAttendeesId | slice:-7 }}</h1>
+      </div>
+    </div>
+
+    <div class="lower-section">
+      <div class="lower-section__content">
+        <h3>{{resolvedEvent.eventDetails.start.toDate()  | date:'MMMM d, y'}}</h3>
+        <div class="body-1">Date</div>
+      </div>
+      <div class="lower-section__content">
+        <h3>{{resolvedEvent.eventDetails.start.toDate()  | date:'h:mm a'}} - 
+            {{resolvedEvent.eventDetails.end.toDate()  | date:'h:mm a'}} 
+        </h3>
+        <div class="body-1">Time</div>
+      </div>
+      <div class="lower-section__content">
+        <h4>{{ attendeesNumber| async }}</h4>
+        <div class="body-1">Attendees</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h1>Hosted By</h1>
+  </section>
+</div>
