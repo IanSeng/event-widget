@@ -13,29 +13,49 @@
         </div>
       </div>
       <div class="upper-section__event-code">
-        <h1>{{ resolvedEvent.eventDetails.eventAttendeesId | slice:-7 }}</h1>
+        <h1>{{ resolvedEvent.eventDetails.eventAttendeesId | slice:-8 }}</h1>
       </div>
     </div>
 
     <div class="lower-section">
       <div class="lower-section__content">
-        <h3>{{resolvedEvent.eventDetails.start.toDate()  | date:'MMMM d, y'}}</h3>
-        <div class="body-1">Date</div>
+        <h4>{{resolvedEvent.eventDetails.start.toDate()  | date:'MMMM d, y'}}</h4>
+        <div class="lower-section__content--description body-1">Date</div>
       </div>
       <div class="lower-section__content">
-        <h3>{{resolvedEvent.eventDetails.start.toDate()  | date:'h:mm a'}} - 
+        <h4>{{resolvedEvent.eventDetails.start.toDate()  | date:'h:mm a'}} - 
             {{resolvedEvent.eventDetails.end.toDate()  | date:'h:mm a'}} 
-        </h3>
-        <div class="body-1">Time</div>
+        </h4>
+        <div class="lower-section__content--description body-1">Time</div>
       </div>
       <div class="lower-section__content">
         <h4>{{ attendeesNumber| async }}</h4>
-        <div class="body-1">Attendees</div>
+        <div class="lower-section__content--description body-1">Attendees</div>
       </div>
     </div>
   </section>
 
   <section>
     <h1>Hosted By</h1>
+    <img src="https://firebasestorage.googleapis.com/v0/b/event-dev-data.appspot.com/o/user-images%2Fdog.jpg?alt=media&token=0468adde-00eb-401e-8cd2-4ae2362f0526" alt="">
   </section>
+
+  <section>
+    <h1>Policies</h1>
+  </section>
+
+  <ngb-tabset #t="ngbTabset">
+    <ngb-tab id="tab-selectbyid1" title="Comments">
+      <ng-template ngbTabContent>
+        
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab id="tab-selectbyid2" title="Attendees">
+     
+      <ng-template ngbTabContent>
+        <app-participants ></app-participants>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
 </div>
+

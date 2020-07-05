@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { take, exhaustMap, flatMap, map, switchMap } from 'rxjs/operators';
 import { BehaviorSubject, of } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 @Component({
     selector: 'app-event-page',
     templateUrl: './event-page.component.html',
@@ -15,7 +17,10 @@ export class EventPageComponent {
     event = new BehaviorSubject<Events>(null);
     attendeesNumber = new BehaviorSubject<string>(null);
     attendeesId: string;
-    constructor(private afs: AngularFirestore, private activatedRoute: ActivatedRoute) {
+    aaa: string;
+    
+    storageRef: any;
+    constructor(private afs: AngularFirestore, private afStorage: AngularFireStorage, private activatedRoute: ActivatedRoute) {
         this.eventId = this.activatedRoute.snapshot.queryParamMap.get('eventId');
         this.afs
             .collection('events')
@@ -29,6 +34,9 @@ export class EventPageComponent {
             .subscribe((result: EventDetails) => {
                 this.getAttendeesNumber(result.eventAttendeesId);
             });
+
+            this.storageRef = afStorage.ref('user-images/dog.jpg');
+            this.storageRef.getDownloadURL().subscribe(url => console.log(url));
 
     }
     getAttendeesNumber(attendeesId: string) {

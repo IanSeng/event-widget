@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { EventCheckinComponent } from './event-checkin/event-checkin.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { EventCheckinComponent } from './event-checkin/event-checkin.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,
+    AngularFireStorageModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NgbModule,
