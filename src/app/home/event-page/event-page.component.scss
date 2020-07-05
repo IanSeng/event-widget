@@ -1,0 +1,59 @@
+@import "../../styles/variables";
+
+.container {
+  width: 1000px;
+  padding: 0;
+}
+.event-details {
+  background: #fff;
+  padding: $sp-m;
+  margin: 0 0 $sp-xxxl 0;
+}
+
+.upper-section {
+  display: flex;
+  justify-content: space-between;
+
+  &__event-details {
+    &--name {
+      margin: 0 0 $sp-xs 0;
+    }
+
+    &--venue,
+    &--category {
+      margin: 0 0 $sp-xxxs 0;
+    }
+  }
+
+  &__event-code {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.lower-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  margin: $sp-m 0 0 0;
+  &__content {
+    text-align: center;
+    flex: 1 1 auto;
+    flex-grow: 1;
+    flex-basis: 0;
+    &--description {
+        color: $grey-2
+    }
+  }
+  &__content + &__content {
+    border-left: solid 1px $grey-2;
+  }
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  background-position: center center;
+
+  border-radius: 100%;
+}

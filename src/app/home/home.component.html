@@ -17,13 +17,15 @@
     This section show you all of the upcoming events in June
   </h3>
   <div class="card-container">
-    <div *ngFor="let event of events" >
+    <div *ngFor="let event of events | async" >
         <div class="card-content">
           <app-card
-            [dateTime]="event.dateTime"
-            [venue]="event.venue"
-            [hosts]="event.hosts"
-            [tagColor]="event.tagColor"
+            [name]="event.eventDetails.name"
+            [dateTime]="event.eventDetails.start"
+            [venue]="event.eventDetails.venue"
+            [hosts]="event.eventDetails.hosts"
+            [tagColor]="tagColors.BLUE"
+            (click)="onEvent(event.id)"
           ></app-card>
         </div>
       </div>

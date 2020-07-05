@@ -1,24 +1,34 @@
-import { map, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
-import { Component } from '@angular/core';
+import { UserCheckInInfo } from './../../shared/model/event.model';
+import { BehaviorSubject } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-participants',
     templateUrl: './participants.component.html',
     styleUrls: ['./participants.component.scss']
 })
 
-export class ParticipantsComponent {
-    data: Observable<DocumentData>;
+export class ParticipantsComponent implements OnInit{
+    datas = new BehaviorSubject<UserCheckInInfo[]>(null);
     constructor(private afs: AngularFirestore) {
         this.afs
-                .collection('event-attendees')
-                .doc(`20201023MTYwMEFB`)
-                .collection('attendess')
-                .snapshotChanges()
-                .subscribe(result => {
-                    console.log(result)
-                })
+            .collection('event-attendees')
+            .doc(`20201023MTYwMEFB`)
+            .collection('attendess')
+            .snapshotChanges()
+            .subscribe(result => {
+                this.datas.next(result.map(e => {
+                    return ({
+                        email: e.payload.doc.data().email,
+                        name: e.payload.doc.data().name,
+                        time: e.payload.doc.data().time.toDate()
+                    }) as UserCheckInInfo;
+                }))
+            })
+    }
+
+    ngOnInit(): void{
+        this.datas.subscribe(e => console.log(e))
     }
 }
 

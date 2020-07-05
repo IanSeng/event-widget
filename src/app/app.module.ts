@@ -1,3 +1,4 @@
+import { EventPageComponent } from './home/event-page/event-page.component';
 import { ParticipantsComponent } from './home/participants/participants.component';
 import { CompletePageComponent } from './event-checkin/complete-page/complete-page.component';
 import { CodeSearchPageComponent } from './event-checkin/code-search-page/code-search-page.component';
@@ -17,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { EventCheckinComponent } from './event-checkin/event-checkin.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { EventCheckinComponent } from './event-checkin/event-checkin.component';
     CodeSearchPageComponent,
     EventCheckinComponent,
     CompletePageComponent,
-    ParticipantsComponent
+    ParticipantsComponent,
+    EventPageComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,
+    AngularFireStorageModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NgbModule,

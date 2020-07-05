@@ -1,1 +1,21 @@
-<h1>Participant component works</h1>
+<main class="container">
+  <h1>Live attendees list</h1>
+  <div class="table-container">
+    <div class="table-header">
+      <h3 class="table-col">#</h3>
+      <h3 class="table-col">Name</h3>
+      <h3 class="table-col">Email</h3>
+      <h3 class="table-col">Time</h3>
+      <h3 class="table-col"></h3>
+    </div>
+    <div *ngFor="let data of datas | async; index as i">
+      <div class="table-body">
+        <div class="table-col body-1">{{ i + 1 }}</div>
+        <div class="table-col body-1">{{ data.name }}</div>
+        <div class="table-col body-1">{{ data.email }}</div>
+        <div class="table-col">{{ data.time | date: "shortTime" }}</div>
+        <a class="table-col">more</a>
+      </div>
+    </div>
+  </div>
+</main>
