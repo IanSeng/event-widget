@@ -1,0 +1,29 @@
+<h1 class="header">Policies</h1>
+<h3 class="sub-header">This is a place holder for policy</h3>
+<main>
+  <section>
+    <div class="img-container">
+      <img class="img-container__img-1" src="/assets/sdg.svg" />
+      <img *ngIf="policies.sdg else errorIcom" class="img-container__img-2" src="/assets/check-icon.svg" />
+    </div>
+    <h3 class="icon-text">sdg</h3>
+  </section>
+  <section>
+    <div class="img-container">
+      <img class="img-container__img-1" src="/assets/edi.svg" />
+      <img *ngIf="policies.edi else errorIcom" class="img-container__img-2" src="/assets/check-icon.svg" />
+    </div>
+    <h3 class="icon-text">EDI</h3>
+  </section>
+  <section>
+    <div class="img-container">
+      <img class="img-container__img-1" src="/assets/enr.svg" />
+      <img *ngIf="policies.tr else errorIcom" class="img-container__img-2" src="/assets/check-icon.svg" />
+    </div>
+    <h3 class="icon-text">E and R</h3>
+  </section>
+</main>
+
+<ng-template #errorIcom>
+  <img class="img-container__img-2" src="/assets/error-icon.svg"
+/></ng-template>

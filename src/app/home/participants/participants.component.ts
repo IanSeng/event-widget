@@ -1,19 +1,25 @@
 import { UserCheckInInfo } from './../../shared/model/event.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 @Component({
     selector: 'app-participants',
     templateUrl: './participants.component.html',
     styleUrls: ['./participants.component.scss']
 })
 
-export class ParticipantsComponent implements OnInit{
+export class ParticipantsComponent implements OnInit, OnDestroy{
+    @Input() eventAttendeesId: string;
     datas = new BehaviorSubject<UserCheckInInfo[]>(null);
+    subscription: Subscription;
     constructor(private afs: AngularFirestore) {
-        this.afs
+    }
+
+    ngOnInit(): void{
+        console.log(this.eventAttendeesId)
+        this.subscription = this.afs
             .collection('event-attendees')
-            .doc(`20201023MTYwMEFB`)
+            .doc(this.eventAttendeesId)
             .collection('attendess')
             .snapshotChanges()
             .subscribe(result => {
@@ -25,10 +31,11 @@ export class ParticipantsComponent implements OnInit{
                     }) as UserCheckInInfo;
                 }))
             })
+        this.datas.subscribe(e => console.log(e))
     }
 
-    ngOnInit(): void{
-        this.datas.subscribe(e => console.log(e))
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }
 

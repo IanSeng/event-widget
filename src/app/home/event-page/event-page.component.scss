@@ -17,6 +17,7 @@
   &__event-details {
     &--name {
       margin: 0 0 $sp-xs 0;
+      font-weight: bold;
     }
 
     &--venue,
@@ -31,6 +32,10 @@
   }
 }
 
+span {
+  color: $grey-2;
+}
+
 .lower-section {
   display: flex;
   justify-content: space-around;
@@ -42,7 +47,7 @@
     flex-grow: 1;
     flex-basis: 0;
     &--description {
-        color: $grey-2
+      color: $grey-2;
     }
   }
   &__content + &__content {
@@ -56,4 +61,9 @@ img {
   background-position: center center;
 
   border-radius: 100%;
+}
+
+section:nth-child(4),
+section:nth-child(3) {
+  margin: $sp-xl 0 0 0;
 }

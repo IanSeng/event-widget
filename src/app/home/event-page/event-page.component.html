@@ -1,35 +1,38 @@
 <div class="container">
-  <section class="event-details" *ngIf="(event | async) as  resolvedEvent">
+  <section class="event-details" *ngIf="event | async as resolvedEvent">
     <div class="upper-section">
       <div class="upper-section__event-details">
         <h1 class="upper-section__event-details--name">
           {{ resolvedEvent.eventDetails.name }}
         </h1>
         <div class="upper-section__event-details--venue body-1">
-          Venue: {{ resolvedEvent.eventDetails.venue }}
+          <span>Venue:</span> {{ resolvedEvent.eventDetails.venue | titlecase }}
         </div>
         <div class="upper-section__event-details--category body-1">
-          Category: {{ resolvedEvent.eventDetails.categories }}
+          <span>Category:</span> {{ resolvedEvent.eventDetails.categories | titlecase }}
         </div>
       </div>
       <div class="upper-section__event-code">
-        <h1>{{ resolvedEvent.eventDetails.eventAttendeesId | slice:-8 }}</h1>
+        <h1>{{ resolvedEvent.eventDetails.eventAttendeesId | slice: -8 }}</h1>
       </div>
     </div>
 
     <div class="lower-section">
       <div class="lower-section__content">
-        <h4>{{resolvedEvent.eventDetails.start.toDate()  | date:'MMMM d, y'}}</h4>
+        <h4>
+          {{ resolvedEvent.eventDetails.start.toDate() | date: "MMMM d, y" }}
+        </h4>
         <div class="lower-section__content--description body-1">Date</div>
       </div>
       <div class="lower-section__content">
-        <h4>{{resolvedEvent.eventDetails.start.toDate()  | date:'h:mm a'}} - 
-            {{resolvedEvent.eventDetails.end.toDate()  | date:'h:mm a'}} 
+        <h4>
+          {{ resolvedEvent.eventDetails.start.toDate() | date: "h:mm a" }} -
+          {{ resolvedEvent.eventDetails.end.toDate() | date: "h:mm a" }}
         </h4>
         <div class="lower-section__content--description body-1">Time</div>
       </div>
       <div class="lower-section__content">
-        <h4>{{ attendeesNumber| async }}</h4>
+        <h4>{{ attendeesNumber | async }}</h4>
         <div class="lower-section__content--description body-1">Attendees</div>
       </div>
     </div>
@@ -37,25 +40,30 @@
 
   <section>
     <h1>Hosted By</h1>
-    <img src="https://firebasestorage.googleapis.com/v0/b/event-dev-data.appspot.com/o/user-images%2Fdog.jpg?alt=media&token=0468adde-00eb-401e-8cd2-4ae2362f0526" alt="">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/event-dev-data.appspot.com/o/user-images%2Fdog.jpg?alt=media&token=0468adde-00eb-401e-8cd2-4ae2362f0526"
+      alt=""
+    />
   </section>
 
   <section>
-    <h1>Policies</h1>
+    <app-policy-banner
+      *ngIf="event | async"
+      [policies]="(event | async).eventDetails.policies"
+    ></app-policy-banner>
   </section>
-
-  <ngb-tabset #t="ngbTabset">
-    <ngb-tab id="tab-selectbyid1" title="Comments">
-      <ng-template ngbTabContent>
-        
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab id="tab-selectbyid2" title="Attendees">
-     
-      <ng-template ngbTabContent>
-        <app-participants ></app-participants>
-      </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+  <section>
+    <ngb-tabset #t="ngbTabset">
+      <ngb-tab id="tab-selectbyid1" title="Comments">
+        <ng-template ngbTabContent> 
+          <app-comment></app-comment>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab id="tab-selectbyid2" title="Attendees">
+        <ng-template ngbTabContent>
+          <app-participants *ngIf="event | async" [eventAttendeesId]="(event |async).eventDetails.eventAttendeesId"></app-participants>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </section>
 </div>
-

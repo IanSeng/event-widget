@@ -1,3 +1,4 @@
+import { CommentComponent } from './home/comment/comment.component';
 import { EventPageComponent } from './home/event-page/event-page.component';
 import { ParticipantsComponent } from './home/participants/participants.component';
 import { CompletePageComponent } from './event-checkin/complete-page/complete-page.component';
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { EventCheckinComponent } from './event-checkin/event-checkin.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     EventCheckinComponent,
     CompletePageComponent,
     ParticipantsComponent,
-    EventPageComponent
+    EventPageComponent,
+    PolicyBannerComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
