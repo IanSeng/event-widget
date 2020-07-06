@@ -1,7 +1,5 @@
-import { async } from '@angular/core/testing';
 import { AuthService, Account } from './auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { of } from 'rxjs';
 import { User } from 'firebase';
 describe('AuthService', () => {
