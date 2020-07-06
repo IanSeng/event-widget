@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { FireStoreService } from './../../service/firestore.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-code-search',

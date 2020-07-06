@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+.header {
+    margin: 0 0 $sp-xs 0;
+}
+
+.sub-header {
+    margin: 0 0 $sp-l 0;
+}
+main {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: $sp-s 0;
+}
+section {
+  text-align: center;
+}
+
+.img-container {
+  position: relative;
+  display: inline-block;
+  &__img-2 {
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+  }
+}
+
+.icon-text {
+    padding: $sp-s 0 0 0;
+}

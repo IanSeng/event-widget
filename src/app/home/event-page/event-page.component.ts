@@ -1,8 +1,8 @@
 import { Events, EventDetails } from './../../shared/model/event.model';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
-import { take, exhaustMap, flatMap, map, switchMap } from 'rxjs/operators';
+import { take, exhaustMap } from 'rxjs/operators';
 import { BehaviorSubject, of } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 

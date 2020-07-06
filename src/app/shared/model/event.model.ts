@@ -9,7 +9,7 @@ export interface UserCheckInInfo {
     name: string;
     time: Date;
 }
-export interface Policy {
+export interface EventPolicy {
     edi: boolean;
     sdg: boolean;
     tr: boolean;
@@ -21,7 +21,7 @@ export interface EventDetails {
     eventAttendeesId: string;
     hosts: string[];
     name: string;
-    polocies: Policy;
+    policies: EventPolicy;
     questionAir: boolean;
     venue: string;
 }
