@@ -48,7 +48,4 @@ export class EventPageComponent {
                 this.attendeesNumber.next(result.size.toString())
             });
     }
-    // getTime(time: Date) {
-    //     return time.toDate();
-    // }
 }
