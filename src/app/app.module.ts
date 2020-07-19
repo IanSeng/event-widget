@@ -1,3 +1,4 @@
+import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
 import { CommentComponent } from './home/comment/comment.component';
 import { EventPageComponent } from './home/event-page/event-page.component';
 import { ParticipantsComponent } from './home/participants/participants.component';
@@ -37,7 +38,8 @@ import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.comp
     ParticipantsComponent,
     EventPageComponent,
     PolicyBannerComponent,
-    CommentComponent
+    CommentComponent,
+    CreateEventPageComponent,
   ],
   imports: [
     BrowserModule,

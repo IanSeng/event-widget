@@ -1,3 +1,4 @@
+import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
 import { EventPageComponent } from './home/event-page/event-page.component';
 import { ParticipantsComponent } from './home/participants/participants.component';
 import { CompletePageComponent } from './event-checkin/complete-page/complete-page.component';
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
     ]},
     { path: 'error', component: ErrorPageComponent},
     { path: 'participants', component: ParticipantsComponent},
-    { path: 'event', component: EventPageComponent}
+    { path: 'event', component: EventPageComponent},
+    { path: 'createevent', component: CreateEventPageComponent}
 ]
 
 @NgModule({
