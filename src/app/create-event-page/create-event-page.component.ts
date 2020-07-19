@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class CreateEventPageComponent {
-
+    time = {hour: 13, minute: 30};
 }

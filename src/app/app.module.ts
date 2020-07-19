@@ -22,6 +22,7 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { EventCheckinComponent } from './event-checkin/event-checkin.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,8 @@ import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.comp
     ReactiveFormsModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

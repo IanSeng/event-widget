@@ -1,0 +1,22 @@
+@import "../styles/variables";
+
+.container {
+  width: 1000px;
+  margin: $sp-l 0 0 0;
+}
+
+.form-container {
+  display: flex;
+  &__first {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+  }
+}
+
+
+input {
+    width: 26rem;
+    height: 3.5rem;
+    border-radius: 12px;
+}

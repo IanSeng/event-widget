@@ -1,5 +1,37 @@
-<div>
-    <h1>About the event</h1>
-    <h3>Please fill in the key details that are needed for creating an event </h3>
+<div class="container">
+  <h1>About the event</h1>
+  <h3>Please fill in the key details that are needed for creating an event</h3>
+  <div class="form-container">
+      <div class="form-container__first">
+        <form [formGroup]="">
+            <p>Event Name</p>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              
+            />
+            <p>Venue</p>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="form-control"
+             
+            />
+            <ngb-timepicker [(ngModel)]="time" [meridian]="true"></ngb-timepicker>
+            <p>Category</p>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="form-control"
+             
+            />
+          </form>
+      </div>
     
+    <div></div>
+  </div>
 </div>
