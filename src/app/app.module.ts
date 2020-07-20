@@ -1,3 +1,4 @@
+import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
 import { CommentComponent } from './home/comment/comment.component';
 import { EventPageComponent } from './home/event-page/event-page.component';
 import { ParticipantsComponent } from './home/participants/participants.component';
@@ -21,6 +22,7 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { EventCheckinComponent } from './event-checkin/event-checkin.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.comp
     ParticipantsComponent,
     EventPageComponent,
     PolicyBannerComponent,
-    CommentComponent
+    CommentComponent,
+    CreateEventPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,8 @@ import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.comp
     ReactiveFormsModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
