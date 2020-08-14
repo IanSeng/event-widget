@@ -1,12 +1,12 @@
 /* Common colors used in this app */
-$grey-1: #4D4D4D;
-$grey-2: #939BA3;
-$shadow-color: #EFF2F5;
-$green: #69CB86;
-$blue: #2196F3;
-$purple: #9C27B0;
+$grey-1: #4d4d4d;
+$grey-2: #939ba3;
+$shadow-color: #eff2f5;
+$green: #69cb86;
+$blue: #006ecc;
+$purple: #9c27b0;
 
-/* Common spacing value */ 
+/* Common spacing value */
 $sp-xxxs: 8px;
 $sp-xxs: 12px;
 $sp-xs: 16px;
@@ -20,3 +20,12 @@ $sp-xxxl: 56px;
 /* Mobile Screen size */
 $mobile-size: 767px;
 
+a {
+  cursor: pointer;
+  color: $blue;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: $blue;
+}

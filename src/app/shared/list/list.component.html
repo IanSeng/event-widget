@@ -1,0 +1,13 @@
+<ng-container *ngFor="let test of tests">
+  <dl>
+    <dd>{{ test.firstName }} {{ test.lastName }}</dd>
+    <dd>{{ test.roomNumber }}</dd>
+    <ng-template [ngIf]="test.status == status.Pending" [ngIfElse]="movedIn">
+      <dd><a class="checkin-link" (click)="onCheckIn(test.roomNumber)">Check In</a></dd>
+    </ng-template>
+  </dl>
+</ng-container>
+
+<ng-template #movedIn>
+  <img class="icon" src="/assets/check-icon.svg" />
+</ng-template>

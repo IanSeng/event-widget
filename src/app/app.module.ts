@@ -1,3 +1,5 @@
+import { ResidentListPage } from './resident-list-page/resident-list-page.component';
+import { ListComponet } from './shared/list/list.component';
 import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
 import { CommentComponent } from './home/comment/comment.component';
 import { EventPageComponent } from './home/event-page/event-page.component';
@@ -41,6 +43,8 @@ import {FormsModule} from '@angular/forms';
     PolicyBannerComponent,
     CommentComponent,
     CreateEventPageComponent,
+    ListComponet,
+    ResidentListPage,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,6 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

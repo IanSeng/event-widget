@@ -1,13 +1,10 @@
 @import "./styles/variables";
 
 #outer-container {
-  display: table;
+  max-width: 1024px;
   margin: 0 auto;
-  max-width: 1000px;
-  padding: $sp-l $sp-m;
+  padding: 32px 24px;
   @media screen and (max-width: $mobile-size) {
     padding: $sp-m $sp-xs;
   }
 }
-
-
