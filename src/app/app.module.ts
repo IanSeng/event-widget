@@ -1,4 +1,5 @@
-import { ResidentListPage } from './resident-list-page/resident-list-page.component';
+import { ResidentPage } from './resident-page/resident-page.component';
+import { ResidentListPage } from './resident-page/resident-list-page/resident-list-page.component';
 import { ListComponet } from './shared/list/list.component';
 import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
 import { CommentComponent } from './home/comment/comment.component';
@@ -25,6 +26,7 @@ import { EventCheckinComponent } from './event-checkin/event-checkin.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { PolicyBannerComponent } from './shared/policy-banner/policy-banner.component';
 import {FormsModule} from '@angular/forms';
+import { ResidentInfoPage } from './resident-page/resident-info-page/resident-info-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {FormsModule} from '@angular/forms';
     CommentComponent,
     CreateEventPageComponent,
     ListComponet,
+    ResidentPage,
     ResidentListPage,
+    ResidentInfoPage,
   ],
   imports: [
     BrowserModule,

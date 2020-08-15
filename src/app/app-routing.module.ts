@@ -1,4 +1,5 @@
-import { ResidentListPage } from './resident-list-page/resident-list-page.component';
+import { ResidentPage } from './resident-page/resident-page.component';
+import { ResidentListPage } from './resident-page/resident-list-page/resident-list-page.component';
 import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
 import { EventPageComponent } from './home/event-page/event-page.component';
 import { ParticipantsComponent } from './home/participants/participants.component';
@@ -11,6 +12,7 @@ import { NgModule } from '@angular/core';
 import { CheckinPageComponent } from './event-checkin/checkin-page/checkin-page.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { EventCheckinComponent } from './event-checkin/event-checkin.component';
+import { ResidentInfoPage } from './resident-page/resident-info-page/resident-info-page.component';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -24,7 +26,11 @@ const appRoutes: Routes = [
     { path: 'participants', component: ParticipantsComponent},
     { path: 'event', component: EventPageComponent},
     { path: 'createevent', component: CreateEventPageComponent},
-    { path: 'resident', component: ResidentListPage}
+    { path: 'resident', component: ResidentPage, children: [
+        {path: '', component: ResidentListPage},
+        {path: ':email', component: ResidentInfoPage}
+    ]}
+    
 ]
 
 @NgModule({
