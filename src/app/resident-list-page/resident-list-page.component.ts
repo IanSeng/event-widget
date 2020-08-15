@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ResidentService } from './../service/resident.service';
 import { FireStoreService } from './../service/firestore.service';
 import { Component, OnDestroy } from '@angular/core';
+import { emit } from 'process';
 @Component({
   selector: 'app-resident-list-page',
   templateUrl: './resident-list-page.component.html',
@@ -25,6 +26,13 @@ export class ResidentListPage implements OnDestroy {
           }
         )
       );
+  }
+
+  onResident(email: string) {
+    console.log(email);
+  }
+  onCheckIn(email: string) {
+    this.fireStoreService.checkInResident(email);
   }
 
   ngOnDestroy(): void {

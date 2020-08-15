@@ -1,4 +1,4 @@
-import { ResidentInfo } from './../shared/list/list';
+import { ResidentInfo, Status } from './../shared/list/list';
 import { ResidentService } from './resident.service';
 import { map, catchError, take, tap } from 'rxjs/operators';
 import { EventAttendees, UserCheckInInfo } from './../shared/model/event.model';
@@ -69,7 +69,7 @@ export class FireStoreService {
       return false;
     }
   }
-
+  
   fetchResidents() {
     return this.afs
       .collection('residents')
@@ -84,5 +84,12 @@ export class FireStoreService {
           this.residentService.getResidentList(residents);
         })
       );
+  }
+
+  checkInResident(email: string) {
+    return this.afs
+      .collection('residents')
+      .doc(email)
+      .set({status: Status.MovedIn}, {merge: true});
   }
 }

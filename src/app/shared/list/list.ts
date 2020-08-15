@@ -9,4 +9,5 @@ export interface ResidentInfo {
     lastName: String;
     room: number;
     status: number;
+    email: string;
 }
