@@ -1,9 +1,9 @@
-<ng-container *ngFor="let test of tests">
+<ng-container *ngFor="let data of datas ">
   <dl>
-    <dd>{{ test.firstName }} {{ test.lastName }}</dd>
-    <dd>{{ test.roomNumber }}</dd>
-    <ng-template [ngIf]="test.status == status.Pending" [ngIfElse]="movedIn">
-      <dd><a class="checkin-link" (click)="onCheckIn(test.roomNumber)">Check In</a></dd>
+    <dd>{{ data.firstName }} {{ data.lastName }}</dd>
+    <dd>{{ data.room }}</dd>
+    <ng-template [ngIf]="data.status == status.Pending" [ngIfElse]="movedIn">
+      <dd><a class="checkin-link" (click)="onCheckIn(data.room)">Check In</a></dd>
     </ng-template>
   </dl>
 </ng-container>

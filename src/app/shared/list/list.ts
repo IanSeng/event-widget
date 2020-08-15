@@ -7,6 +7,6 @@ export enum Status {
 export interface ResidentInfo {
     firstName: String;
     lastName: String;
-    roomNumber: number;
+    room: number;
     status: number;
 }
