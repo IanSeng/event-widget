@@ -10,4 +10,6 @@ export interface ResidentInfo {
     room: number;
     status: number;
     email: string;
+    checkInTime: Date;
+    checkInBy: string;
 }

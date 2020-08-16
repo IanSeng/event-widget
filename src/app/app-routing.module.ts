@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     { path: 'createevent', component: CreateEventPageComponent},
     { path: 'resident', component: ResidentPage, children: [
         {path: '', component: ResidentListPage},
-        {path: ':email', component: ResidentInfoPage}
+        {path: ':code', component: ResidentInfoPage}
     ]}
     
 ]

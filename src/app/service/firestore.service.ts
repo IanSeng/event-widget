@@ -69,7 +69,7 @@ export class FireStoreService {
       return false;
     }
   }
-  
+
   fetchResidents() {
     return this.afs
       .collection('residents')
@@ -86,10 +86,23 @@ export class FireStoreService {
       );
   }
 
-  checkInResident(email: string) {
+  fetchResidentDetail(email: string) {
     return this.afs
       .collection('residents')
       .doc(email)
-      .set({status: Status.MovedIn}, {merge: true});
+      .snapshotChanges()
+      .pipe(
+        take(1),
+        map((data) => {
+          return data.payload.data() as ResidentInfo;
+        })
+      );
+  }
+
+  checkInResident(email: string) {
+    this.afs
+      .collection('residents')
+      .doc(email)
+      .set({ status: Status.MovedIn }, { merge: true });
   }
 }
