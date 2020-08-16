@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ResidentService } from './../../service/resident.service';
 import { FireStoreService } from './../../service/firestore.service';
 import { ResidentInfo } from './../../shared/list/list';
@@ -12,10 +13,13 @@ import { Component, OnDestroy } from '@angular/core';
 export class ResidentListPage implements OnDestroy {
   residentListData: ResidentInfo[];
   subscriptions: Subscription;
+
   constructor(
     private fireStoreService: FireStoreService,
-    private residentService: ResidentService
+    private residentService: ResidentService,
+    private router: Router,
   ) {
+    
     this.subscriptions = new Subscription();
     this.subscriptions
       .add(this.fireStoreService.fetchResidents().subscribe())
@@ -29,7 +33,7 @@ export class ResidentListPage implements OnDestroy {
   }
 
   onResident(email: string) {
-    console.log(email);
+    this.router.navigate([`/resident/${email}`])
   }
 
   onCheckIn(email: string) {
