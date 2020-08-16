@@ -1,3 +1,4 @@
+import { SignupPage } from './auth/signup-page/signup-page.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ResidentPage } from './resident-page/resident-page.component';
 import { ResidentListPage } from './resident-page/resident-list-page/resident-list-page.component';
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     { path: 'participants', component: ParticipantsComponent},
     { path: 'event', component: EventPageComponent},
     { path: 'createevent', component: CreateEventPageComponent},
+    { path: 'signup', component: SignupPage},
     { path: 'resident', canActivate: [AuthGuard],component: ResidentPage, children: [
         {path: '', component: ResidentListPage},
         {path: ':code', component: ResidentInfoPage}

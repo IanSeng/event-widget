@@ -1,3 +1,4 @@
+import { SignupPage } from './auth/signup-page/signup-page.component';
 import { ResidentPage } from './resident-page/resident-page.component';
 import { ResidentListPage } from './resident-page/resident-list-page/resident-list-page.component';
 import { ListComponet } from './shared/list/list.component';
@@ -45,6 +46,7 @@ import { ResidentInfoPage } from './resident-page/resident-info-page/resident-in
     PolicyBannerComponent,
     CommentComponent,
     CreateEventPageComponent,
+    SignupPage,
     ListComponet,
     ResidentPage,
     ResidentListPage,
