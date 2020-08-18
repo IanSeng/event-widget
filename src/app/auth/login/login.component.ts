@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).then(
       response => {
         this.isLoading = false;
-        this.router.navigate(['/home']);
+        this.router.navigate(['/resident']);
       }).catch(error => {
         this.isLoading = false;
         this.error = 'Incorrect Credentials';

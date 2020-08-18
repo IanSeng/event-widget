@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { UserCheckInInfo, EventAttendees } from './../../shared/model/event.model';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { FireStoreService } from './../../service/firestore.service';
 import { Component } from '@angular/core';
 import { take } from 'rxjs/operators';
@@ -13,7 +13,7 @@ import { take } from 'rxjs/operators';
 
 export class CompletePageComponent {
     eventDetail: Observable<EventAttendees>;
-    userInfo: Observable<UserCheckInInfo>;
+    userInfo = new BehaviorSubject<UserCheckInInfo>(null);
     constructor(private fireStoreService: FireStoreService, private router: Router) {
         this.fireStoreService.userInfo.pipe(take(1)).subscribe(res => {
             if (res == null) {

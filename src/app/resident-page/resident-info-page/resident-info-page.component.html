@@ -1,1 +1,20 @@
-<h1>Hello</h1>
+<ng-container *ngIf="residentInfo | async as info">
+  <div>
+    <h1>{{ info.firstName}} {{ info.lastName }}</h1>
+    <a>Check In</a>
+  </div>
+  <h2>Information</h2>
+  <div>
+    Room: <span>{{ info.room }}</span>
+  </div>
+  <div>
+    E-mail: <span>{{ info.email }}</span>
+  </div>
+  <div>
+    Checkin time: <span>{{ info.checkInTime }}</span>
+  </div>
+  <div>
+    Checkin by: <span>{{ info.checkInBy }}</span>
+  </div>
+</ng-container>
+
